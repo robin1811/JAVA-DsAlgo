@@ -89,6 +89,17 @@ class recursion{
         }
         return max;
     }
+
+    // question 11 using static:
+    static int max = 0;
+    public static void MaxOfArray1( int[] arr, int i ){
+        if( i == arr.length ){ System.out.println(" MAX -> " + max); return; }
+        if( arr[i] > max ){ max = arr[i]; }
+        MaxOfArray1(arr,i+1);
+    }
+
+    //Question: 12 ->> 
+
     public static void main(String[] args){
         Scanner scn = new Scanner(System.in);
         
@@ -109,8 +120,8 @@ class recursion{
         // System.out.println(TohCount(n,"SOURCE","DESTINATION","HELPER"));  
         // DisplayArray(arr,0);                                         //Question 9
         // DisplayRev(arr,0);                                           //Question 10
-        System.out.println(MaxOfArray(arr,0));
+        // System.out.println(MaxOfArray(arr,0));                       //Question 11
+        MaxOfArray1(arr,0);
 
-        THIS IS TO CHECK 2nd time
     }
 }
