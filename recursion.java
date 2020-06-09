@@ -118,16 +118,45 @@ class recursion{
         if(x == arr[i]){ return i; }
         return ans;
     }
-    //qU
+    //Question: 13 Print Last Index of the element in the array.(In post)
+    public static int LastIndex(int[] arr, int i,int x){
+        if(i == arr.length){return -1;}
+        int ans = LastIndex(arr,i+1,x);
+        if(arr[i] == x){
+            return arr[i]; 
+        }
+        return ans;
+    } //question 13 using pre call
+    public static void LastIndex1(int[] arr, int i, int x, int ans){
+        if(i == arr.length){System.out.println(ans); return;}
+        if(arr[i] == x){
+            ans = i;
+        }
+        LastIndex1(arr,i+1,x,ans);
+    }
+    // Question: 14 Print all index in an array.
+    public static void pringIndex(int[] arr, int i, int x){
+        if(i == arr.length){return;}
+        if(arr[i] == x){System.out.print(i + " ");}
+        pringIndex(arr,i+1,x);
+    }
+    // Question 14 using post call.
+    public static void pringIndex1(int[] arr, int i, int x){
+        if(i == arr.length){return;}
+        pringIndex1(arr,i+1,x);
+        if(arr[i] == x){System.out.print(i + " ");}
+    }
+
 
     public static void main(String[] args){
         Scanner scn = new Scanner(System.in);
         
-        int n =  scn.nextInt();
-        int[] arr = new int[n];
-        for( int i = 0; i < arr.length; i++ ){
-            arr[i] = scn.nextInt();
-        }
+        // int n =  scn.nextInt();
+        int[] arr ={11,15,40,4,4,9};
+        // int[] arr = new int[n];
+        // for( int i = 0; i < arr.length; i++ ){
+        //     arr[i] = scn.nextInt();
+        // }
         // int x = scn.nextInt();
         // printDecreasing(n);                                          //Question 1
         // printIncreasing(n);                                          //Question 2
@@ -142,7 +171,11 @@ class recursion{
         // DisplayRev(arr,0);                                           //Question 10
         // System.out.println(MaxOfArray(arr,0));                       //Question 11
         // MaxOfArray1(arr,0);
-        // FirstIndex(arr,x,0);    
-        System.out.print(FirstIndex1(arr,0,4));   
+        // FirstIndex(arr,x,0);                                         //Question 12    
+        // System.out.print(FirstIndex1(arr,0,4));   
+        // System.out.print(LastIndex(arr,0,4));                        //Question 13
+        // LastIndex1(arr,0,4,0);
+        // pringIndex(arr,0,4);                                         //Question 14 
+        pringIndex1(arr,0,4);
     }
 }
