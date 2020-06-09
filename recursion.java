@@ -98,17 +98,37 @@ class recursion{
         MaxOfArray1(arr,i+1);
     }
 
-    //Question: 12 ->> 
+    //Question: 12 ->> Print first index of an array using recursion.
+    public static void FirstIndex(int [] arr, int x, int i){
+        if(i == arr.length){
+            System.out.print("not found");
+            return;
+        }
+        if(arr[i] == x){
+            System.out.print(i);
+            return;
+        }
+        FirstIndex(arr,x,i+1);
+
+    }
+    //print first index using Postcall type:
+    public static int FirstIndex1(int[] arr, int i, int x){
+        if(i == arr.length){return -1;}
+        int ans = FirstIndex1(arr,i+1,x);
+        if(x == arr[i]){ return i; }
+        return ans;
+    }
+    //qU
 
     public static void main(String[] args){
         Scanner scn = new Scanner(System.in);
         
         int n =  scn.nextInt();
-        // int x = scn.nextInt();
         int[] arr = new int[n];
         for( int i = 0; i < arr.length; i++ ){
             arr[i] = scn.nextInt();
         }
+        // int x = scn.nextInt();
         // printDecreasing(n);                                          //Question 1
         // printIncreasing(n);                                          //Question 2
         // printIncDec(n);                                              //Question 3
@@ -121,7 +141,8 @@ class recursion{
         // DisplayArray(arr,0);                                         //Question 9
         // DisplayRev(arr,0);                                           //Question 10
         // System.out.println(MaxOfArray(arr,0));                       //Question 11
-        MaxOfArray1(arr,0);
-
+        // MaxOfArray1(arr,0);
+        // FirstIndex(arr,x,0);    
+        System.out.print(FirstIndex1(arr,0,4));   
     }
 }
